@@ -1,53 +1,50 @@
 <!DOCTYPE html>
-  <html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Info</title>
-      <link rel="stylesheet" href="../test.css">
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
-  </head>
-  <body>
-      <form>
-          <div class="search">
-              <select class="search-input">
-                  <option value="" disabled selected>Select category...</option>
-                  <option value="gaussian_blur">Gaussian Blur</option>
-                  <option value="speckle_noise">Speckle Noise</option>
-                  <option value="jpeg_compression">JPEG Compression</option>
-                  <option value="pixelate">Pixelate</option>
-                  <option value="contrast">Contrast</option>
-                  <option value="brightness">Brightness</option>
-                  <option value="defocus_blur">Defocus Blur</option>
-                  <option value="gaussian_noise">Gaussian Noise</option>
-              </select>
-          </div>
-      </form>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='test.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+</head>
+<body>
+    <form action="/" method="POST" id="imageForm">
+        <div class="search">
+            <select id="image_selection" name="image_selection" onchange="this.form.submit()">
+                <option value="" disabled selected>Select category...</option>
+                <option value="gaussian_blur/1/test">Gaussian Blur</option>
+                <option value="speckle_noise/1/test">Speckle Noise</option>
+                <option value="jpeg_compression/1/test">JPEG Compression</option>
+                <option value="pixelate/1/test">Pixelate</option>
+                <option value="contrast/1/test">Contrast</option>
+                <option value="brightness/1/test">Brightness</option>
+                <option value="defocus_blur/1/test">Defocus Blur</option>
+                <option value="gaussian_noise/1/test">Gaussian Noise</option>
+            </select>
+            <input type="hidden" id="current_index" name="current_index" value="{{ current_index }}">
+        </div>
+    </form>
 
-      <!-- Flex containers for images -->
-      <div class="image-container">
-          <img src="data:image/jpeg;base64,{{ image_data }}" alt="Firebase Image">
-          <img src="../white.avif" alt="Image 2">
-      </div>
+    <!-- Flex containers for images -->
+    <div class="image-container">
+        <img id="image_display" src="data:image/jpeg;base64,{{ image_data }}" alt="Firebase Image">
+        <img id="histogram_display" src="data:image/png;base64,{{ histogram_data }}" alt="Histogram">
+    </div>
 
-      <!-- Previous and Next buttons -->
-      <div class="button-container">
-          <button id="previous-button">Previous</button>
-          <button id="next-button">Next</button>
-      </div>
+    <!-- Previous and Next buttons -->
+    <div class="button-container">
+        <form action="/prev" method="POST">
+            <button id="previous-button" onclick="this.form.submit()">Previous</button>
+            <input type="hidden" id="current_index" name="current_index" value="{{ current_index }}">
+        </form>
+        <form action="/next" method="POST">
+            <button id="next-button" onclick="this.form.submit()">Next</button>
+            <input type="hidden" id="current_index" name="current_index" value="{{ current_index }}">
+        </form>
 
-      <!-- JavaScript for button functionality (optional) -->
-      <script>
-          const previousButton = document.getElementById('previous-button');
-          const nextButton = document.getElementById('next-button');
 
-          previousButton.addEventListener('click', () => {
-              // Add functionality to show previous images
-          });
+    </div>
 
-          nextButton.addEventListener('click', () => {
-              // Add functionality to show next images
-          });
-      </script>
-  </body>
-  </html>
+
+</body>
+</html>
