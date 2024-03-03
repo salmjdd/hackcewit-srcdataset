@@ -1,0 +1,91 @@
+
+.search {
+  --padding: 24px;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  padding: var(--padding);
+  border-radius: 28px;
+  background: #f6f6f6;
+  transition: box-shadow 0.25s;
+  margin: 20px auto; /* Center the search bar horizontally and give it some space at the top */
+}
+
+.search:focus-within {
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.75);
+}
+
+.search-input {
+  font-size: 16px;
+  font-family: 'Lexend', sans-serif;
+  color: #333333;
+  margin-left: var(--padding);
+  outline: none;
+  border: none;
+  background: transparent;
+  width: 300px;
+}
+
+.search-input::placeholder,
+.search-icon {
+  color: rgba(0, 0, 0, 0.25);
+}
+
+
+body {
+  background-image: url('background1.png');
+  background-size: cover; /* Cover the entire background */
+  background-repeat: no-repeat; /* Do not repeat the background image */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the flex items horizontally */
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* Additional styles for flex containers */
+.image-container {
+  display: flex;
+  flex-direction: column; /* Stack images vertically */
+  justify-content: space-between; /* Align images vertically */
+  align-items: center; /* Center images horizontally */
+  margin: 20px auto; /* Create space on the sides */
+  max-width: 20%;
+  max-height: 40vh; /* Set a specific height */
+}
+
+.image-container img {
+  max-width: 100%; /* Adjust width as needed */
+  max-height: 100;
+  margin: 0 5%;
+}
+/* Add margin-bottom to the second image */
+.image-container img:nth-child(2) {
+  margin-top: 20px; /* Adjust the amount of padding between images */
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Button styles */
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  width: 60%; /* Adjust width as needed */
+}
+
+.button-container button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: white; /* Change button color to white */
+  color: black; /* Change button text color */
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s; /* Add transition effect */
+}
+
+.button-container button:hover {
+  background-color: green;
+  color: white; /* Change button text color on hover */
+}
